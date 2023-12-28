@@ -1,0 +1,340 @@
+// Header
+.edit_profile {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #eee;
+    background-color: #fff;
+    height: 74px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+#edit_controls {
+    top: 0;
+    left: 0;
+    z-index: 1030;
+    padding: 15px 8px;
+    background: #eee;
+    opacity: 1;
+}
+
+.on_edit_back {
+    color: #6f6f6f;
+    font-weight: 600;
+    border: none;
+    background: 0 0;
+    padding: 0;
+    margin: 5px;
+    font-size: 15px;
+    line-height: 18px;
+    border-radius: 6px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    white-space: nowrap;
+    user-select: none;
+    transition: all 0.1s ease-in-out;
+    position: relative;
+}
+
+.on_edit_back .fachevron_left {
+    position: relative;
+    top: 1px;
+    padding: 10px 12px;
+    color: #6f6f6f;
+}
+
+.fachevron_left {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+}
+
+.wroks_item {
+    flex: 1;
+    color: #222;
+    display: inline-block;
+}
+
+.small_title {
+    color: #6f6f6f;
+    margin: 0;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.h4 {
+    font-size: 21px;
+    font-weight: 550;
+    line-height: 24px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+// Container
+.container {
+    display: flex;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 114px;
+}
+
+.picture_sidebar {
+    position: relative;
+    width: 35%;
+    min-height: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.picture_sidebar .image_placeholder {
+    position: relative;
+    display: block;
+    width: 260px;
+    height: 400px;
+    background-color: #eee;
+    border: 1px solid #eee;
+    margin: 0 auto;
+}
+
+.picture_sidebar .image_placeholder .cover {
+    width: 260px;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    background-color: #eee;
+    color: #eee;
+}
+
+.picture_sidebar .cover_upload {
+    width: 50%;
+    height: 86px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+}
+
+.picture_sidebar .cover_upload .cover_icon {
+    font-size: 60px;
+    color: #6f6f6f;
+    cursor: pointer;
+}
+
+.picture_sidebar .cover_upload .add_cover_text {
+    font-size: 16px;
+    color: #6f6f6f;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.main_edit_container {
+    position: relative;
+    width: 50%;
+    min-height: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 50px;
+}
+
+.row {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.main_edit_container .work_section {
+    box-shadow: 0 1px 10px 0 rgba(34, 34, 34, 0.08), 0 4px 5px 0 rgba(34, 34, 34, 0.1);
+    border-radius: 5px;
+}
+
+.work_edit_select {
+    border-bottom: 1px solid #eee;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    padding-top: 5px;
+}
+
+.work_edit_select .on_switch_type {
+    border-bottom: 4px solid #ff6122;
+    font-weight: 600;
+    padding-bottom: 15px;
+}
+
+.work_edit_select > button:first-of-type {
+    border-top-left-radius: 6px;
+}
+
+.work_edit_select > button {
+    color: #222;
+    background-color: #fff;
+    padding: 25px 18px 18px;
+    margin: 0 4px;
+    font-size: 18px;
+}
+
+.main_edit_container .main_edit_form {
+    padding: 2% 5%;
+}
+
+.form_group {
+    margin-bottom: 15px;
+}
+
+.main_edit_container .form_group label {
+    display: block;
+    font-size: 21px;
+    font-weight: 550;
+    color: #222;
+    margin-bottom: 9px;
+}
+
+.main_edit_container label {
+    position: relative;
+    top: 3px;
+}
+
+.main_edit_container .empty_warning {
+    font-size: 14px;
+    color: #6f6f6f;
+    float: right;
+}
+
+.hidden {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+.main_edit_container .form_group .story_title {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px 9px;
+    border: 1px solid #eee;
+}
+
+.main_edit_container .form_group textarea {
+    width: 100%;
+    height: 187px;
+    font-size: 16px;
+    padding: 3px 0 0 9px;
+    border: 1px solid #eee;
+    resize: none;
+}
+
+.main_edit_container .characters_form {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.main_edit_container .characters_form .character input {
+    display: inline-block;
+    width: 50%;
+    font-size: 16px;
+    margin-right: 6px;
+    margin-bottom: 16px;
+    padding: 10px 9px;
+    border: 1px solid #eee;
+}
+
+.main_edit_container .categoty_form {
+    display: flex;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.main_edit_container select:not(.form-element) {
+    border: 1px solid #eee;
+    height: 42px;
+    font-weight: 500;
+    display: inline-block;
+    width: 176px;
+    text-align: center;
+}
+
+.main_edit_container .category_form select {
+    margin-bottom: 16px;
+}
+
+.form_control {
+    padding: 6px 15px;
+    font-size: 16px;
+    line-height: 24px;
+    color: #6f6f6f;
+    margin-left: 36px;
+    background-color: #fff;
+    background-image: none;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+}
+
+.main_edit_container .target_audience_form {
+    display: flex;
+    border-bottom: 1px solid #eee;
+}
+
+.main_edit_container .target_audience_form select {
+    margin-bottom: 16px;
+    width: auto;
+}
+
+.main_edit_container .action_btn_form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.btn_grey {
+    color: #222;
+    background-color: #eee;
+    border-color: #eee;
+    padding: 10px 15px;
+    margin-right: 100px;
+    font-size: 16px;
+    line-height: 18px;
+    border-radius: 6px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 2px solid transparent;
+    white-space: nowrap;
+    user-select: none;
+    transition: all 0.1s ease-in-out;
+    position: relative;
+}
+
+.btn_orange {
+    color: #fff;
+    background-color: #ff6122;
+    border-color: transparent;
+    padding: 10px 15px;
+    margin-left: 100px;
+    font-size: 16px;
+    line-height: 18px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 0;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 2px solid transparent;
+    white-space: nowrap;
+    user-select: none;
+    transition: all 0.1s ease-in-out;
+    position: relative;
+}

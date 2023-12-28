@@ -1,0 +1,49 @@
+.wrapper {
+    width: 100%;
+    height: var(--header-navbar-height);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+}
+
+.inner {
+    width: 80%;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 100px;
+    height: auto;
+}
+
+.actions {
+    display: flex;
+    margin-left: auto;
+}
+
+.category_btn,
+.hot_story,
+.upload_story,
+.signIn_btn,
+.signUp_btn,
+.logout_btn {
+    height: var(--header-navbar-height);
+    display: flex;
+    padding: 0 15px;
+    margin-left: 24px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: transparent;
+    align-items: center;
+    cursor: pointer;
+}
+
+.actions .auth {
+    display: flex;
+}

@@ -1,0 +1,221 @@
+.wrapper {
+    width: 100%;
+}
+
+.wrapper .main {
+    width: 100%;
+    margin-top: 50px;
+    min-height: 500px;
+    display: flex;
+}
+
+//Author
+.wrapper .author {
+    width: 15%;
+    height: 300px;
+    position: sticky;
+    top: 80px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 130px;
+}
+
+.author .author_info {
+    width: 100%;
+    height: 200px;
+}
+
+.author_info img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.author_info .author_name {
+    display: flex;
+    justify-content: center;
+}
+
+.author_info .author_name h4 {
+    margin-left: 5px;
+}
+
+//Container
+.wrapper .container {
+    width: 60%;
+    height: max-content;
+    padding: 0 60px;
+}
+
+.container .story_name {
+    width: 100%;
+    height: max-content;
+    padding: 20px 10px 50px 10px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.container .story_name h4 {
+    font-size: 36px;
+}
+
+// Story Content
+.container .story_content {
+    width: 100%;
+    padding: 60px 0;
+}
+
+.container .control_chapter {
+    width: 100%;
+    display: flex;
+    position: relative;
+    margin-top: 30px;
+}
+
+.control_chapter .prev_btn,
+.control_chapter .next_btn {
+    width: 150px;
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 15px;
+    background-color: rgb(39, 83, 228);
+    cursor: pointer;
+}
+
+.control_chapter .prev_btn:hover {
+    background-color: #195cae;
+}
+
+.control_chapter .next_btn:hover {
+    background-color: #195cae;
+}
+
+.next_btn {
+    position: absolute;
+    right: 0;
+}
+
+//Comments
+.comments {
+    width: 100%;
+    height: max-content;
+    padding: 24px 0;
+    margin-top: 50px;
+    border-top: 1px solid #eee;
+}
+
+.comments .textbox {
+    position: relative;
+    display: flex;
+}
+
+.comments .textbox textarea {
+    height: 48px;
+    border-radius: 24px;
+    box-sizing: border-box;
+    resize: none;
+    width: 100%;
+    padding: 12px 48px 12px 16px;
+    color: #121212;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.comments .textbox button {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    background: #d7caff;
+    padding: 0;
+    cursor: pointer;
+}
+
+.comments .comment_user {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.comment_user .cmt_list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.comment_user .cmt_list .cmt_item {
+    display: flex;
+    margin-top: 15px;
+}
+
+.cmt_item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.cmt_item .cmt_content {
+    height: max-content;
+    padding-left: 5px;
+}
+
+.cmt_content p {
+    font-size: 11px;
+    color: rgba(18, 18, 18, 0.64);
+}
+
+//Banner
+.wrapper .banner {
+    width: 25%;
+    height: 300px;
+    margin-top: 150px;
+}
+
+.banner .title {
+    width: 100%;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+.banner .title h4 {
+    font-size: 22px;
+}
+
+.banner .colection {
+    width: 100%;
+    height: max-content;
+}
+
+.banner .colection .colection_item {
+    display: flex;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.colection_item img {
+    width: 25%;
+    height: 120px;
+}
+
+.colection_item .content {
+    width: 75%;
+    height: 120px;
+}
+
+.colection_item .content .name {
+    font-weight: 550;
+}
+
+.colection_item .content .description {
+    font-size: 13px;
+    color: #6f6f6f;
+}

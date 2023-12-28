@@ -1,0 +1,33 @@
+//Menu wrapper
+.menu-list {
+    min-width: 200px;
+
+    .menu-item {
+        margin-left: 0;
+    }
+}
+
+.menu-title {
+    font-size: 18px;
+    font-weight: 500;
+    padding: 16px 12px;
+    text-transform: uppercase;
+}
+
+//Menu item
+.menu-item {
+    width: 33.33333%;
+    color: #222;
+    font-size: 16px;
+    justify-content: flex-start;
+    padding: 8px 12px;
+    margin-left: 2px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    text-align: left;
+
+    &:hover {
+        background-color: rgba(242, 239, 240, 0.6);
+        cursor: pointer;
+    }
+}
