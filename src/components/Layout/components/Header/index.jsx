@@ -62,22 +62,23 @@ const CATEGORY_ITEMS = [
 ];
 
 function Header() {
-    const { isLoggedIn, setIsLoggedIn, userData, setUserData } = useContext(AuthContext);
+    const { setIsLoggedIn, setUserData } = useContext(AuthContext);
     const navigate = useNavigate();
+    const isLoggedIn = ''; // Replace this with your actual login check
 
     const handleLogout = () => {
-        localStorage.removeItem('token'); // Xóa token từ localStorage
-        setIsLoggedIn(false); // Đặt lại trạng thái đăng nhập về false
-        setUserData(null); // Đặt lại thông tin người dùng về null hoặc giá trị mặc định
+        localStorage.removeItem('token');
+        setIsLoggedIn(false);
+        setUserData(null);
         navigate('/login');
     };
 
     return (
         <div className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to="/">
+                <Link to='/'>
                     <div className={cx('logo')}>
-                        <img src={images.logo} alt="logo" />
+                        <img src={images.logo} alt='logo' />
                     </div>
                 </Link>
                 <div className={cx('category')}>
@@ -87,7 +88,7 @@ function Header() {
                 </div>
 
                 {/* Hot story */}
-                <Link to="/hotstory">
+                <Link to='/hotstory'>
                     <div className={cx('hot_story')}>Hot Story</div>
                 </Link>
 
@@ -96,7 +97,7 @@ function Header() {
 
                 <div className={cx('actions')}>
                     {isLoggedIn && (
-                        <Link to="/upload">
+                        <Link to='/upload'>
                             <div className={cx('upload_story')}>Upload Story</div>
                         </Link>
                     )}
@@ -109,10 +110,10 @@ function Header() {
                         </div>
                     ) : (
                         <div className={cx('auth')}>
-                            <Link to="/login">
+                            <Link to='/login'>
                                 <div className={cx('signIn_btn')}>Sign In</div>
                             </Link>
-                            <Link to="/register">
+                            <Link to='/register'>
                                 <div className={cx('signUp_btn')}>Sign Up</div>
                             </Link>
                         </div>

@@ -60,6 +60,13 @@ function Home() {
         return () => clearInterval(interval); // Xóa interval khi component unmount
     }, [current, images.length]);
 
+    // checkTokenRoleLogin
+    useEffect(()=>{
+        // lấy đc token ở localstore
+        //gọi api để check login and role
+        //if token đúng => role // lưu nó vào globalstate
+    },[])
+
     // Handle prev, next story_carousel
     const totalSlides = stories_img.length;
 
