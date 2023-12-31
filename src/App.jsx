@@ -1,41 +1,59 @@
-import { Fragment } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { publicRoutes } from './routes';
+import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
+import Login from '~/pages/Login';
+import Register from '~/pages/Register';
+import { privateRoutes, publicRoutes } from '~/routes';
 import DefaultLayout from '~/components/Layout/DefaultLayout';
-
-import { AuthProvider } from './utils/AuthContext';
+import NotFoundPage from '~/pages/NotFoundPage/NotFoundPage';
 
 function App() {
     return (
         <Router>
-            <AuthProvider>
-                <div className="App">
-                    <Routes>
-                        {publicRoutes.map((route, index) => {
-                            const Page = route.component;
-                            let Layout = DefaultLayout;
+            <div className="App">
+                <Routes>
+                    <Route path="*" exact={true} element={<NotFoundPage/>} />
+                    <Route path="/login" exact={true} element={<Login/>} />
+                    <Route path="/register" exact={true} element={<Register/>} />
+                    {/*web Routes*/}
+                    {publicRoutes.map((route, index) => {
+                        const { path, element, children } = route;
+                        return (
+                            <Route key={index} path={path}>
+                                {children.map((childRoute, childIndex) => {
+                                    let Layout = DefaultLayout;
+                                    return (
+                                        <Route
+                                            key={childIndex}
+                                            path={childRoute.path}
+                                            element={<Layout>{childRoute.element}</Layout>}
+                                        />
+                                    );
+                                })}
+                            </Route>
+                        );
+                    })}
 
-                            if (route.layout) {
-                                Layout = route.layout;
-                            } else if (route.layout === null) {
-                                Layout = Fragment;
-                            }
+                    {/* Admin Routes */}
+                    {privateRoutes.map((route, index) => {
+                        const { path, element, children } = route;
+                        return (
+                            <Route key={index} path={path} element={element}>
+                                {children.map((childRoute, childIndex) => {
+                                    return (
+                                       <>
+                                           <Route
+                                               key={childIndex}
+                                               path={childRoute.path}
+                                               element={childRoute.element}
+                                           />
+                                       </>
 
-                            return (
-                                <Route
-                                    key={index}
-                                    path={route.path}
-                                    element={
-                                        <Layout>
-                                            <Page />
-                                        </Layout>
-                                    }
-                                />
-                            );
-                        })}
-                    </Routes>
-                </div>
-            </AuthProvider>
+                                    );
+                                })}
+                            </Route>
+                        );
+                    })}
+                </Routes>
+            </div>
         </Router>
     );
 }

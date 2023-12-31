@@ -29,44 +29,68 @@ import AddAuthor from '~/pages/AdminAuthor/AddAuthor';
 import SearchResult from '~/components/Layout/components/Search/SearchResult';
 
 import DefaultAdminLayout from '~/components/Layout/DefaultAdminlayout';
+import DefaultLayout from '~/components/Layout/DefaultLayout';
+import PublicRole from '~/components/Authorization/PublicRole';
+import AdminRole from '~/components/Authorization/AdminRole';
 
 // Public routes
 const publicRoutes = [
-    { path: '/', component: Home },
-    { path: '/login', component: Login, layout: null },
-    { path: '/register', component: Register, layout: null },
-    { path: '/hotstory', component: HotStory },
-    { path: '/upload', component: Upload, layout: null },
-    { path: '/catedetail/:genresId', component: CategoryDetail },
-    { path: '/storydetail/:storyId', component: StoryDetail },
-    { path: '/history', component: UserHistory },
+    {
+        path: "",
+        element: (
+            <PublicRole>
+                <DefaultLayout />
+            </PublicRole>
+        ),
+        children: [
+            { path: '', element: <Home/> },
+            { path: 'home', element: <Home/> },
+            { path: 'login', element: <Login/>},
+            { path: 'register', element: <Register/>},
+            { path: 'hot-story', element: <HotStory/> },
+            { path: 'upload', element: <Upload/>},
+            { path: 'cate-detail', element: <CategoryDetail/> },
+            { path: 'story-detail', element: <StoryDetail/> },
+           { path: 'history', element: <UserHistory/> },
+            { path: 'search-result', element: <SearchResult/> },
 
-    //Admin User
-    { path: '/usermanager', component: AdminUserManager, layout: DefaultAdminLayout },
-    { path: '/adduser', component: AddUser, layout: DefaultAdminLayout },
-    { path: '/updateuser/:username', component: UpdateUser, layout: DefaultAdminLayout },
-
-    //Admin Employee
-    { path: '/employee', component: AdminEmployee, layout: DefaultAdminLayout },
-    { path: '/addemployee', component: AddEmployee, layout: DefaultAdminLayout },
-    { path: '/updateEmploy/:employeeId', component: UpdateEmployee, layout: DefaultAdminLayout },
-
-    //Admin Genres
-    { path: '/genres', component: AdminGenres, layout: DefaultAdminLayout },
-    { path: '/addgenres', component: AddGenres, layout: DefaultAdminLayout },
-
-    //Admin Stories
-    { path: '/story', component: AdminStory, layout: DefaultAdminLayout },
-    { path: '/addstory', component: AddStory, layout: DefaultAdminLayout },
-    { path: '/updatestory/:storyId', component: UpdateStory, layout: DefaultAdminLayout },
-
-    //Admin Author
-    { path: '/author', component: AdminAuthor, layout: DefaultAdminLayout },
-    { path: '/addauthor', component: AddAuthor, layout: DefaultAdminLayout },
-
-    { path: '/searchresult', component: SearchResult },
+        ],
+    },
 ];
 
-const privateRoutes = [];
+const privateRoutes = [
+    {
+        path: "admin",
+        element: (
+            <AdminRole>
+                <DefaultAdminLayout />
+            </AdminRole>
+        ),
+        children: [
+            //Admin User
+            { path: 'user-manager', element: <AdminUserManager/> },
+            { path: 'adduser', element: <AddUser/>},
+            { path: 'update-user/:username', element: <UpdateUser/>},
+
+            //Admin Employee
+            { path: 'employee', element: <AdminEmployee/>},
+            { path: 'add-employee', component: <AddEmployee/>},
+            // { path: 'updateEmploy/:employeeId', element: UpdateEmployee},
+
+            //Admin Genres
+            // { path: 'genres', element: AdminGenres},
+            // { path: '/addgenres', component: AddGenres, layout: DefaultAdminLayout },
+
+            //Admin Stories
+            // { path: 'story', element: AdminStory},
+            // { path: '/addstory', component: AddStory},
+            // { path: '/updatestory/:storyId', component: UpdateStory},
+
+            //Admin Author
+            // { path: 'author', element: AdminAuthor},
+            // { path: '/addauthor', component: AddAuthor},
+        ],
+    },
+];
 
 export { publicRoutes, privateRoutes };
