@@ -1,7 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
+import { Genres } from '~/utils/request';
 import { AuthContext } from '~/utils/AuthContext';
 import Menu from '~/components/Popper/Menu';
 import Search from '../Search';
@@ -10,61 +11,26 @@ import styles from './Header.module.scss';
 
 const cx = classNames.bind(styles);
 
-const CATEGORY_ITEMS = [
-    {
-        title: 'Humorous',
-        to: '/catedetail',
-    },
-    {
-        title: 'Horrified',
-        to: '/catedetail',
-    },
-    {
-        title: 'Fiction',
-        to: '/catedetail',
-    },
-    {
-        title: 'Folk',
-        to: '/catedetail',
-    },
-    {
-        title: 'Love language',
-        to: '/catedetail',
-    },
-    {
-        title: 'Thrilling',
-        to: '/catedetail',
-    },
-    {
-        title: 'Completed',
-        to: '/catedetail',
-    },
-    {
-        title: 'Adventure',
-        to: '/catedetail',
-    },
-    {
-        title: 'Fighting',
-        to: '/catedetail',
-    },
-    {
-        title: 'Castles',
-        to: '/catedetail',
-    },
-    {
-        title: 'Forbidden',
-        to: '/catedetail',
-    },
-    {
-        title: 'Babydaddy',
-        to: '/catedetail',
-    },
-];
-
 function Header() {
+    const [genres, setGenres] = useState([]);
     const { isLoggedIn, setIsLoggedIn, userData, setUserData } = useContext(AuthContext);
     const navigate = useNavigate();
 
+    //Get Genres
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await Genres.get('/list');
+                const slicedData = response.data.slice(0, 16);
+                setGenres(slicedData);
+            } catch (error) {
+                console.error('Error fetching data: ', error);
+            }
+        };
+        fetchData();
+    }, []);
+
+    //Logout
     const handleLogout = () => {
         localStorage.removeItem('token'); // Xóa token từ localStorage
         setIsLoggedIn(false); // Đặt lại trạng thái đăng nhập về false
@@ -81,7 +47,7 @@ function Header() {
                     </div>
                 </Link>
                 <div className={cx('category')}>
-                    <Menu items={CATEGORY_ITEMS}>
+                    <Menu items={genres}>
                         <button className={cx('category_btn')}>Category</button>
                     </Menu>
                 </div>

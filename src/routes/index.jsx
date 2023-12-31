@@ -6,6 +6,7 @@ import HotStory from '~/pages/HotStory';
 import Upload from '~/pages/Upload';
 import CategoryDetail from '~/pages/CategoryDetail';
 import StoryDetail from '~/pages/StoryDetail';
+import UserHistory from '~/pages/UserHistory';
 
 import AdminUserManager from '~/pages/AdminUserManager';
 import AddUser from '~/pages/AdminUserManager/AddUser';
@@ -36,8 +37,9 @@ const publicRoutes = [
     { path: '/register', component: Register, layout: null },
     { path: '/hotstory', component: HotStory },
     { path: '/upload', component: Upload, layout: null },
-    { path: '/catedetail', component: CategoryDetail },
-    { path: '/storydetail', component: StoryDetail },
+    { path: '/catedetail/:genresId', component: CategoryDetail },
+    { path: '/storydetail/:storyId', component: StoryDetail },
+    { path: '/history', component: UserHistory },
 
     //Admin User
     { path: '/usermanager', component: AdminUserManager, layout: DefaultAdminLayout },

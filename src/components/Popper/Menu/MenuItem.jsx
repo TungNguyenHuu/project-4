@@ -6,8 +6,8 @@ const cx = classNames.bind(styles);
 
 function MenuItem({ data }) {
     return (
-        <Link to={data.to}>
-            <button className={cx('menu-item')}>{data.title}</button>
+        <Link to={`/catedetail/${data.id}`}>
+            <button className={cx('menu-item')}>{data.name}</button>
         </Link>
     );
 }

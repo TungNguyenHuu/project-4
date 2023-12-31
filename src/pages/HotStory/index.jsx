@@ -1,91 +1,45 @@
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
+import { Stories } from '~/utils/request';
+
 import styles from './HotStory.module.scss';
 
 const cx = classNames.bind(styles);
 
-const STORY_ITEM = [
-    {
-        image: 'https://img.wattpad.com/cover/128034696-144-k549891.jpg',
-        title: 'The Last of the Dragons-Set 1',
-        description: `Book 1:The Last Dragon(chp 1-125) Book 2:The Return(chp 126-170) Book
-        3:Friend or Enemy(chp171-200) ***Inspired by Game Of Thrones*** For
-        generations, the people of th`,
-        tag: 'Adventure',
-    },
-    {
-        image: 'https://img.wattpad.com/cover/128034696-144-k549891.jpg',
-        title: 'The Last of the Dragons-Set 1',
-        description: `Book 1:The Last Dragon(chp 1-125) Book 2:The Return(chp 126-170) Book
-        3:Friend or Enemy(chp171-200) ***Inspired by Game Of Thrones*** For
-        generations, the people of th`,
-        tag: 'Adventure',
-    },
-    {
-        image: 'https://img.wattpad.com/cover/128034696-144-k549891.jpg',
-        title: 'The Last of the Dragons-Set 1',
-        description: `Book 1:The Last Dragon(chp 1-125) Book 2:The Return(chp 126-170) Book
-        3:Friend or Enemy(chp171-200) ***Inspired by Game Of Thrones*** For
-        generations, the people of th`,
-        tag: 'Adventure',
-    },
-    {
-        image: 'https://img.wattpad.com/cover/128034696-144-k549891.jpg',
-        title: 'The Last of the Dragons-Set 1',
-        description: `Book 1:The Last Dragon(chp 1-125) Book 2:The Return(chp 126-170) Book
-        3:Friend or Enemy(chp171-200) ***Inspired by Game Of Thrones*** For
-        generations, the people of th`,
-        tag: 'Adventure',
-    },
-    {
-        image: 'https://img.wattpad.com/cover/128034696-144-k549891.jpg',
-        title: 'The Last of the Dragons-Set 1',
-        description: `Book 1:The Last Dragon(chp 1-125) Book 2:The Return(chp 126-170) Book
-        3:Friend or Enemy(chp171-200) ***Inspired by Game Of Thrones*** For
-        generations, the people of th`,
-        tag: 'Adventure',
-    },
-    {
-        image: 'https://img.wattpad.com/cover/128034696-144-k549891.jpg',
-        title: 'The Last of the Dragons-Set 1',
-        description: `Book 1:The Last Dragon(chp 1-125) Book 2:The Return(chp 126-170) Book
-        3:Friend or Enemy(chp171-200) ***Inspired by Game Of Thrones*** For
-        generations, the people of th`,
-        tag: 'Adventure',
-    },
-    {
-        image: 'https://img.wattpad.com/cover/128034696-144-k549891.jpg',
-        title: 'The Last of the Dragons-Set 1',
-        description: `Book 1:The Last Dragon(chp 1-125) Book 2:The Return(chp 126-170) Book
-        3:Friend or Enemy(chp171-200) ***Inspired by Game Of Thrones*** For
-        generations, the people of th`,
-        tag: 'Adventure',
-    },
-    {
-        image: 'https://img.wattpad.com/cover/128034696-144-k549891.jpg',
-        title: 'The Last of the Dragons-Set 1',
-        description: `Book 1:The Last Dragon(chp 1-125) Book 2:The Return(chp 126-170) Book
-        3:Friend or Enemy(chp171-200) ***Inspired by Game Of Thrones*** For
-        generations, the people of th`,
-        tag: 'Adventure',
-    },
-    {
-        image: 'https://img.wattpad.com/cover/128034696-144-k549891.jpg',
-        title: 'The Last of the Dragons-Set 1',
-        description: `Book 1:The Last Dragon(chp 1-125) Book 2:The Return(chp 126-170) Book
-        3:Friend or Enemy(chp171-200) ***Inspired by Game Of Thrones*** For
-        generations, the people of th`,
-        tag: 'Adventure',
-    },
-    {
-        image: 'https://img.wattpad.com/cover/128034696-144-k549891.jpg',
-        title: 'The Last of the Dragons-Set 1',
-        description: `Book 1:The Last Dragon(chp 1-125) Book 2:The Return(chp 126-170) Book
-        3:Friend or Enemy(chp171-200) ***Inspired by Game Of Thrones*** For
-        generations, the people of th`,
-        tag: 'Adventure',
-    },
-];
 function HotStory() {
+    const [hotStories, setHotStories] = useState([]);
+    const [stories, setStories] = useState([]);
+
+    //Hot stories of the month
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await Stories.get('/public/list');
+                const slicedData = response.data.slice(0, 7);
+                setHotStories(slicedData);
+            } catch (error) {
+                console.error('Error fetching data: ', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await Stories.get('/public/list');
+                const slicedStories = response.data.slice(8, 18);
+                setStories(slicedStories);
+            } catch (error) {
+                console.error('Error fetching data: ', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
     return (
         <>
             <div className={cx('wrapper')}>
@@ -100,92 +54,46 @@ function HotStory() {
                         </div>
                         <div className={cx('hot_list')}>
                             <ul className={cx('list')}>
-                                <li className={cx('list_item')}>
-                                    <div className={cx('cover')}>
-                                        <img src="https://img.wattpad.com/cover/112709081-128-k876148.jpg" />
-                                    </div>
-                                    <div className={cx('tag')}>
-                                        <a className={cx('tag_item')} href="">
-                                            Adventure
-                                        </a>
-                                    </div>
-                                </li>
-                                <li className={cx('list_item')}>
-                                    <div className={cx('cover')}>
-                                        <img src="https://img.wattpad.com/cover/253385737-144-k85609.jpg" />
-                                    </div>
-                                    <div className={cx('tag')}>
-                                        <a className={cx('tag_item')} href="">
-                                            Fiction
-                                        </a>
-                                    </div>
-                                </li>
-                                <li className={cx('list_item')}>
-                                    <div className={cx('cover')}>
-                                        <img src="https://img.wattpad.com/cover/270271977-144-k488287.jpg" />
-                                    </div>
-                                    <div className={cx('tag')}>
-                                        <a className={cx('tag_item')} href="">
-                                            Triller
-                                        </a>
-                                    </div>
-                                </li>
-                                <li className={cx('list_item')}>
-                                    <div className={cx('cover')}>
-                                        <img src="https://img.wattpad.com/cover/282217933-144-k612015.jpg" />
-                                    </div>
-                                    <div className={cx('tag')}>
-                                        <a className={cx('tag_item')} href="">
-                                            Protective
-                                        </a>
-                                    </div>
-                                </li>
-                                <li className={cx('list_item')}>
-                                    <div className={cx('cover')}>
-                                        <img src="https://img.wattpad.com/cover/128034696-144-k549891.jpg" />
-                                    </div>
-                                    <div className={cx('tag')}>
-                                        <a className={cx('tag_item')} href="">
-                                            Sad
-                                        </a>
-                                    </div>
-                                </li>
-                                <li className={cx('list_item')}>
-                                    <div className={cx('cover')}>
-                                        <img src="https://img.wattpad.com/cover/268894128-144-k554563.jpg" />
-                                    </div>
-                                    <div className={cx('tag')}>
-                                        <a className={cx('tag_item')} href="">
-                                            Romance
-                                        </a>
-                                    </div>
-                                </li>
-                                <li className={cx('list_item')}>
-                                    <div className={cx('cover')}>
-                                        <img src="https://img.wattpad.com/cover/273344046-144-k762329.jpg" />
-                                    </div>
-                                    <div className={cx('tag')}>
-                                        <a className={cx('tag_item')} href="">
-                                            Complement
-                                        </a>
-                                    </div>
-                                </li>
+                                {hotStories.map((story) => {
+                                    return (
+                                        <li key={story.id} className={cx('list_item')}>
+                                            <div className={cx('cover')}>
+                                                <Link to={`/storydetail/${story.id}`}>
+                                                    <img
+                                                        src={`http://localhost:8080/api/v1/stories/public/${story.id}/image`}
+                                                        alt="image"
+                                                    />
+                                                </Link>
+                                            </div>
+                                            {/* <div className={cx('tag')}>
+                                                <a className={cx('tag_item')} href="">
+                                                    {story.genres}
+                                                </a>
+                                            </div> */}
+                                        </li>
+                                    );
+                                })}
                             </ul>
                             <div className={cx('wrapper_story')}>
-                                {STORY_ITEM.map((item) => {
+                                {stories.map((item) => {
                                     return (
                                         <div key={item.id} className={cx('story_item')}>
                                             <div className={cx('story_image')}>
-                                                <img src={item.image} />
+                                                <Link to={`/storydetail/${item.id}`}>
+                                                    <img
+                                                        src={`http://localhost:8080/api/v1/stories/public/${item.id}/image`}
+                                                        alt="image"
+                                                    />
+                                                </Link>
                                             </div>
                                             <div className={cx('content')}>
                                                 <div className={cx('story_title')}>{item.title}</div>
                                                 <div className={cx('description')}>{item.description}</div>
-                                                <div className={cx('tag')}>
+                                                {/* <div className={cx('tag')}>
                                                     <a className={cx('tag_item')} href="">
                                                         {item.tag}
                                                     </a>
-                                                </div>
+                                                </div> */}
                                             </div>
                                         </div>
                                     );

@@ -1,111 +1,44 @@
+import { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import classNames from 'classnames/bind';
-import { Link } from 'react-router-dom';
+import { Genres } from '~/utils/request';
 
 import styles from './CategoryDetail.scss';
 
 const cx = classNames.bind(styles);
 
-const CATEGORY_ITEMS = [
-    { tag: 'Adventure' },
-    { tag: 'Mafia' },
-    { tag: 'Mature' },
-    { tag: 'Action' },
-    { tag: 'Guns' },
-    { tag: 'Romance' },
-    { tag: 'Darkromance' },
-    { tag: 'Kidnapped' },
-    { tag: 'Adventure' },
-    { tag: 'Mafia' },
-    { tag: 'Mature' },
-    { tag: 'Action' },
-    { tag: 'Guns' },
-    { tag: 'Romance' },
-];
-
-const STORY_ITEM = [
-    {
-        image: 'https://img.wattpad.com/cover/128034696-144-k549891.jpg',
-        title: 'The Last of the Dragons-Set 1',
-        description: `Book 1:The Last Dragon(chp 1-125) Book 2:The Return(chp 126-170) Book
-        3:Friend or Enemy(chp171-200) ***Inspired by Game Of Thrones*** For
-        generations, the people of th`,
-        tag: 'Adventure',
-    },
-    {
-        image: 'https://img.wattpad.com/cover/128034696-144-k549891.jpg',
-        title: 'The Last of the Dragons-Set 1',
-        description: `Book 1:The Last Dragon(chp 1-125) Book 2:The Return(chp 126-170) Book
-        3:Friend or Enemy(chp171-200) ***Inspired by Game Of Thrones*** For
-        generations, the people of th`,
-        tag: 'Adventure',
-    },
-    {
-        image: 'https://img.wattpad.com/cover/128034696-144-k549891.jpg',
-        title: 'The Last of the Dragons-Set 1',
-        description: `Book 1:The Last Dragon(chp 1-125) Book 2:The Return(chp 126-170) Book
-        3:Friend or Enemy(chp171-200) ***Inspired by Game Of Thrones*** For
-        generations, the people of th`,
-        tag: 'Adventure',
-    },
-    {
-        image: 'https://img.wattpad.com/cover/128034696-144-k549891.jpg',
-        title: 'The Last of the Dragons-Set 1',
-        description: `Book 1:The Last Dragon(chp 1-125) Book 2:The Return(chp 126-170) Book
-        3:Friend or Enemy(chp171-200) ***Inspired by Game Of Thrones*** For
-        generations, the people of th`,
-        tag: 'Adventure',
-    },
-    {
-        image: 'https://img.wattpad.com/cover/128034696-144-k549891.jpg',
-        title: 'The Last of the Dragons-Set 1',
-        description: `Book 1:The Last Dragon(chp 1-125) Book 2:The Return(chp 126-170) Book
-        3:Friend or Enemy(chp171-200) ***Inspired by Game Of Thrones*** For
-        generations, the people of th`,
-        tag: 'Adventure',
-    },
-    {
-        image: 'https://img.wattpad.com/cover/128034696-144-k549891.jpg',
-        title: 'The Last of the Dragons-Set 1',
-        description: `Book 1:The Last Dragon(chp 1-125) Book 2:The Return(chp 126-170) Book
-        3:Friend or Enemy(chp171-200) ***Inspired by Game Of Thrones*** For
-        generations, the people of th`,
-        tag: 'Adventure',
-    },
-    {
-        image: 'https://img.wattpad.com/cover/128034696-144-k549891.jpg',
-        title: 'The Last of the Dragons-Set 1',
-        description: `Book 1:The Last Dragon(chp 1-125) Book 2:The Return(chp 126-170) Book
-        3:Friend or Enemy(chp171-200) ***Inspired by Game Of Thrones*** For
-        generations, the people of th`,
-        tag: 'Adventure',
-    },
-    {
-        image: 'https://img.wattpad.com/cover/128034696-144-k549891.jpg',
-        title: 'The Last of the Dragons-Set 1',
-        description: `Book 1:The Last Dragon(chp 1-125) Book 2:The Return(chp 126-170) Book
-        3:Friend or Enemy(chp171-200) ***Inspired by Game Of Thrones*** For
-        generations, the people of th`,
-        tag: 'Adventure',
-    },
-    {
-        image: 'https://img.wattpad.com/cover/128034696-144-k549891.jpg',
-        title: 'The Last of the Dragons-Set 1',
-        description: `Book 1:The Last Dragon(chp 1-125) Book 2:The Return(chp 126-170) Book
-        3:Friend or Enemy(chp171-200) ***Inspired by Game Of Thrones*** For
-        generations, the people of th`,
-        tag: 'Adventure',
-    },
-    {
-        image: 'https://img.wattpad.com/cover/128034696-144-k549891.jpg',
-        title: 'The Last of the Dragons-Set 1',
-        description: `Book 1:The Last Dragon(chp 1-125) Book 2:The Return(chp 126-170) Book
-        3:Friend or Enemy(chp171-200) ***Inspired by Game Of Thrones*** For
-        generations, the people of th`,
-        tag: 'Adventure',
-    },
-];
-
 function CategoryDetail() {
+    const { genresId } = useParams();
+    const [genres, setGenres] = useState([]);
+    const [storiesBygenresId, setStoriesBygenresId] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await Genres.get('/list');
+                const slicedData = response.data.slice(0, 16);
+                setGenres(slicedData);
+            } catch (error) {
+                console.error('Error fetching data: ', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await Genres.get(`/public/${genresId}/listStory`);
+                setStoriesBygenresId(response.data);
+            } catch (error) {
+                console.error('Error fetching data: ', error);
+            }
+        };
+
+        fetchData();
+    }, [genresId]);
+
     return (
         <div className={cx('wrapper')}>
             <div className={cx('container_main')}>
@@ -118,11 +51,11 @@ function CategoryDetail() {
                         <div className={cx('wrapper_tags')}>
                             <div className={cx('tags_carousel')}>
                                 <div className={cx('tag_items')}>
-                                    {CATEGORY_ITEMS.map((cate) => {
+                                    {genres.map((genre) => {
                                         return (
-                                            <Link to={`/catedetail/${cate.tag}`}>
-                                                <div key={cate.id} className={cx('tag_item')}>
-                                                    {cate.tag}
+                                            <Link to={`/catedetail/${genre.id}`}>
+                                                <div key={genre.id} className={cx('tag_item')}>
+                                                    {genre.name}
                                                 </div>
                                             </Link>
                                         );
@@ -132,20 +65,20 @@ function CategoryDetail() {
                         </div>
                     </div>
                     <div className={cx('wrapper_story')}>
-                        {STORY_ITEM.map((item) => {
+                        {storiesBygenresId.map((item) => {
                             return (
                                 <div key={item.id} className={cx('story_item')}>
                                     <div className={cx('story_image')}>
-                                        <img src={item.image} />
+                                        <Link to={`/storydetail/${item.id}`}>
+                                            <img
+                                                src={`http://localhost:8080/api/v1/stories/public/${item.id}/image`}
+                                                alt=""
+                                            />
+                                        </Link>
                                     </div>
                                     <div className={cx('content')}>
                                         <div className={cx('story_title')}>{item.title}</div>
                                         <div className={cx('description')}>{item.description}</div>
-                                        <div className={cx('tag')}>
-                                            <a className={cx('tag_item')} href="">
-                                                {item.tag}
-                                            </a>
-                                        </div>
                                     </div>
                                 </div>
                             );
