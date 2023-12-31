@@ -6,6 +6,7 @@ import HotStory from '~/pages/HotStory';
 import Upload from '~/pages/Upload';
 import CategoryDetail from '~/pages/CategoryDetail';
 import StoryDetail from '~/pages/StoryDetail';
+import UserHistory from '~/pages/UserHistory';
 
 import AdminUserManager from '~/pages/AdminUserManager';
 import AddUser from '~/pages/AdminUserManager/AddUser';
@@ -50,6 +51,7 @@ const publicRoutes = [
             { path: 'upload', element: <Upload/>},
             { path: 'cate-detail', element: <CategoryDetail/> },
             { path: 'story-detail', element: <StoryDetail/> },
+           { path: 'history', element: <UserHistory/> },
             { path: 'search-result', element: <SearchResult/> },
 
         ],

@@ -50,4 +50,8 @@ const Authors = axios.create({
     baseURL: 'http://localhost:8080/api/v1/author',
 });
 
-export { Users, Employees, Stories, Genres, axiosLogin, Authors };
+const Comments = axios.create({
+    baseURL: 'http://localhost:8080/api/v1/comment',
+});
+
+export { Users, Employees, Stories, Genres, axiosLogin, Authors, Comments };

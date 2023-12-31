@@ -1,5 +1,95 @@
 
 
+.container {
+    width: 80%;
+}
+
+.banner {
+    width: 20%;
+    position: relative;
+    margin-top: 40px;
+}
+
+.banner img {
+    width: 100%;
+    position: sticky;
+    top: var(--header-navbar-height);
+    height: 570px;
+}
+
+.container .title {
+    width: 100%;
+    height: max-content;
+    padding: 10px 0;
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+.title_detail {
+    width: 100%;
+    padding: 10px 0;
+}
+
+.title_detail h4 {
+    font-size: 20px;
+}
+
+.title_detail p {
+    color: #6f6f6f;
+}
+
+.hot_list {
+    width: 100%;
+    height: 240px;
+}
+
+.hot_list .list {
+    display: block;
+    margin: 0;
+    padding: 0;
+    height: 220px;
+    box-sizing: border-box;
+}
+.hot_list .list_item {
+    display: inline-block;
+    vertical-align: top;
+    width: 125px;
+    height: auto;
+    margin: 0 6px;
+    box-sizing: border-box;
+}
+
+.hot_list .list_item .cover img {
+    width: 125px;
+    height: 200px;
+    border-radius: 5px;
+    box-shadow: 0 3px 14px 2px rgba(34, 34, 34, 0.08), 0 7px 10px 1px rgba(34, 34, 34, 0.1);
+}
+
+.hot_list .tag_item {
+    padding: 0 10px;
+    border: 1px solid #eee;
+    margin-top: 10px;
+    border-radius: 12px;
+    font-weight: 520;
+    font-size: 14px;
+    line-height: 19px;
+    cursor: pointer;
+}
+
+.tag_item {
+    display: inline-flex;
+    align-items: center;
+    background-color: #eee;
+    border: 1px solid transparent;
+    border-radius: 100px;
+    color: #6f6f6f;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 13px;
+    line-height: 20px;
+}
+
 .wrapper_story {
     width: 100%;
     min-height: 600px;
